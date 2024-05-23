@@ -42,7 +42,7 @@ def main():
     # Generar listas vacías para las respuestas generadas y el usuario.
     ## Respuesta del Asistente
     if 'generated' not in st.session_state:
-        st.session_state['generated'] = ["Hola, soy tu asistente huggingFace. ¿Hazme una pregunta?"]
+        st.session_state['generated'] = ["Hola, soy tu asistente huggingFace. Hazme una pregunta"]
 
     ## Pregunta del usuario
     if 'user' not in st.session_state:
