@@ -6,20 +6,24 @@ from langchain import PromptTemplate, HuggingFaceHub, LLMChain
 from dotenv import load_dotenv
 import os
 
-# Cargar las variables de entorno desde el archivo ..env
+# Cargar las variables de entorno desde el archivo .env
 load_dotenv()
 
 # Configurar el token de API de Hugging Face Hub
 huggingfacehub_api_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 
 # Verificar si el token de API está configurado
+if not huggingfacehub_api_token:
+    st.error(
+        "Error: No se encontró el token de API de Hugging Face Hub. verifica que 'HUGGINGFACEHUB_API_TOKEN'. sea correcto")
+    st.stop()
 
 # Configurar la página de la aplicación
 st.set_page_config(page_title="OpenAssistant Powered Chat App")
 
 # Contenido de la barra lateral
 with st.sidebar:
-    st.title('🤗💬 HuggingChat App')
+    st.title('HuggingChat App')
     st.markdown('''
     ## Acerca de
     Esta aplicación es un chatbot alimentado por LLM construido usando:
@@ -31,14 +35,14 @@ with st.sidebar:
     add_vertical_space(3)
     st.write('Hecho con ❤️ por [Prompt Engineer](https://youtube.com/@engineerprompt)')
 
-st.header("Hola soy tu asistente personal HuggingChat")
+st.header("Tu Asistente Personal HuggingChat")
 
 
 def main():
     # Generar listas vacías para las respuestas generadas y el usuario.
     ## Respuesta del Asistente
     if 'generated' not in st.session_state:
-        st.session_state['generated'] = ["Hola, ¿En qué puedo ayudarte?"]
+        st.session_state['generated'] = ["Hola, soy tu asistente huggingFace. ¿Hazme una pregunta?"]
 
     ## Pregunta del usuario
     if 'user' not in st.session_state:
