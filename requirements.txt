@@ -1,0 +1,6 @@
+streamlit
+streamlit_chat
+streamlit_extras
+langchain_community
+python-dotenv
+huggingface-hub
